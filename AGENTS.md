@@ -5,7 +5,7 @@
 This workspace contains two independent applications (and nested Git repositories):
 
 - `musubi-tuner-gui-frontend/`: React 19, TypeScript, Vite, and Tailwind. Application code lives in `src/`; reusable UI is under `src/components/`, API clients under `src/api/`, hooks under `src/hooks/`, and static files under `public/`.
-- `musubi-tuner-gui-backend/`: FastAPI application code in `app/`, pytest coverage in `tests/`, and download helpers in `scripts/`. Runtime state belongs in ignored `data/`. Production frontend assets are generated into ignored `web/`.
+- `musubi-tuner-gui-backend/`: FastAPI code in `app/`, organized into `routes/`, `schemas/`, `services/`, and `utils/`; pytest coverage in `tests/`; and download helpers in `scripts/`. Runtime state belongs in ignored `data/`. Production frontend assets are generated into ignored `web/`.
 
 Keep API contract changes synchronized across both applications. Consult each subproject's `README.md` and `AGENTS.md` for local details.
 
