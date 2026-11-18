@@ -9,7 +9,7 @@ This workspace contains two independent applications (and nested Git repositorie
 
 Keep API contract changes synchronized across both applications. Consult each subproject's `README.md` and `AGENTS.md` for local details.
 
-The root `install.bat` and `start.bat` set up and start the local Windows install. This folder is the workspace root (`MUSUBI_GUI_WORKSPACE_ROOT`); `install.bat` clones the backend, the frontend, and the `musubi-tuner/` trainer into it, and `start.bat` runs the backend from `musubi-tuner-gui-backend/`. Keep `.bat` files CRLF (root `.gitattributes`); their options are documented in the backend `README.md` ("Run locally on Windows").
+The root `install.bat`, `start.bat` and `update.bat` set up, start and update the local Windows install (`update.bat` updates this workspace and the cloned repositories). This folder is the workspace root (`MUSUBI_GUI_WORKSPACE_ROOT`); `install.bat` clones the backend, the frontend, and the `musubi-tuner/` trainer into it, and `start.bat` runs the backend from `musubi-tuner-gui-backend/`. Keep `.bat` files CRLF (root `.gitattributes`); the options of `install.bat` and `start.bat` are documented in the backend `README.md` ("Run locally on Windows"), and those of `update.bat` in the root `README.md` and the header of `update.bat`.
 
 ## Build, Test, and Development Commands
 
