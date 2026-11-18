@@ -5,9 +5,11 @@
 This workspace contains two independent applications (and nested Git repositories):
 
 - `musubi-tuner-gui-frontend/`: React 19, TypeScript, Vite, and Tailwind. Application code lives in `src/`; reusable UI is under `src/components/`, API clients under `src/api/`, hooks under `src/hooks/`, and static files under `public/`.
-- `musubi-tuner-gui-backend/`: FastAPI code in `app/`, organized into `routes/`, `schemas/`, `services/`, and `utils/`; pytest coverage in `tests/`; and download helpers in `scripts/`. Runtime state belongs in ignored `data/`. Production frontend assets are generated into ignored `web/`.
+- `musubi-tuner-gui-backend/`: FastAPI code in `app/`, organized into `routes/`, `schemas/`, `services/`, and `utils/`; pytest coverage in `tests/`; and download bundles in `app/download_catalog.py`. Runtime state belongs in ignored `data/`. Production frontend assets are generated into ignored `web/`.
 
 Keep API contract changes synchronized across both applications. Consult each subproject's `README.md` and `AGENTS.md` for local details.
+
+The root `install.bat` and `start.bat` set up and start the local Windows install. This folder is the workspace root (`MUSUBI_GUI_WORKSPACE_ROOT`); `install.bat` clones the backend, the frontend, and the `musubi-tuner/` trainer into it, and `start.bat` runs the backend from `musubi-tuner-gui-backend/`. Keep `.bat` files CRLF (root `.gitattributes`); their options are documented in the backend `README.md` ("Run locally on Windows").
 
 ## Build, Test, and Development Commands
 

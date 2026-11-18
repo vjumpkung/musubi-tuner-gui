@@ -1,2 +1,12 @@
 musubi-tuner-gui-backend/
 musubi-tuner-gui-frontend/
+.claude
+/musubi-tuner/
+# GUI defaults written into the workspace root (downloads, training output, logs)
+/diffusion_models/
+/text_encoders/
+/vae/
+/image_encoder/
+/checkpoints/
+/lora_training/
+/logs/
