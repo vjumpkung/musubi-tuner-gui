@@ -119,10 +119,14 @@ call uv pip install --python "%TRAINER_PY%" xformers==0.0.35 --index-url "%TORCH
 if errorlevel 1 echo WARNING: xformers could not be installed; continuing without it.
 call uv pip install --python "%TRAINER_PY%" -e "%ROOT%\musubi-tuner"
 if errorlevel 1 goto :fail
+call :trainer_extras
+call uv cache clean
+if errorlevel 1 goto :fail
 goto :after_trainer
 
 :trainer_present
 echo Already installed at "%ROOT%\musubi-tuner\.venv".
+call :trainer_extras
 goto :after_trainer
 
 :skip_trainer
@@ -136,6 +140,15 @@ echo   Start the GUI with: "%ROOT%\start.bat"  (add --browser to use your web br
 if defined NO_START exit /b 0
 call "%ROOT%\start.bat"
 exit /b %ERRORLEVEL%
+
+:trainer_extras
+set "SAGE_CUDA=cu128"
+if not "%TORCH_INDEX_URL:cu13=%"=="%TORCH_INDEX_URL%" set "SAGE_CUDA=cu130"
+call uv pip install --python "%TRAINER_PY%" triton-windows==3.6.0.post26
+if errorlevel 1 echo WARNING: triton-windows could not be installed; continuing without it.
+call uv pip install --python "%TRAINER_PY%" "https://github.com/woct0rdho/SageAttention/releases/download/v2.2.0-windows.post6/sageattention-2.2.0+%SAGE_CUDA%torch2.10.0andhigher.post6-cp310-abi3-win_amd64.whl"
+if errorlevel 1 echo WARNING: SageAttention could not be installed; continuing without it.
+exit /b 0
 
 :fail_uv
 echo ERROR: uv was installed but is not on PATH. Open a new terminal and run install.bat again.
